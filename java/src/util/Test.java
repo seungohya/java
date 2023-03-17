@@ -34,8 +34,5 @@ public class Test {
 		this.tel = tel;
 	}
 	public void print () {}
-	public void sum() {
-		
-	}
-
+	
 }
