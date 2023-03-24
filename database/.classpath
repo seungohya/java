@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/darin/Downloads/sqldeveloper/jdbc/lib/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/darin/Downloads/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

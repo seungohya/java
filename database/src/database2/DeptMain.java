@@ -13,9 +13,12 @@ public class DeptMain {
 			System.out.println("===================");
 			System.out.println("1.특정 부서 조회 ");
 			System.out.println("2.전체 부서 조회 ");
+			System.out.println("3.새 부서 추가 ");
+			System.out.println("4.부서 정보 수정 ");
+			System.out.println("5.부서 정보 삭제 ");
 			System.out.println("6.종료 ");
 			System.out.println("===================");
-			
+
 			System.out.println("메뉴 입력 : ");
 			int no = sc.nextInt();
 
@@ -34,6 +37,47 @@ public class DeptMain {
 				}
 				break;
 
+			case 3:
+				System.out.println("새로운 부서 정보를 입력합니다.");
+				System.out.print("부서 코드를 입력하세요: ");
+				deptno = sc.nextInt();
+				sc.nextLine(); // 입력 버퍼 비우기
+				System.out.print("부서 이름을 입력하세요: ");
+				String dname = sc.nextLine();
+				System.out.print("부서 위치를 입력하세요: ");
+				String loc = sc.nextLine();
+				DeptDTO newDept = new DeptDTO(deptno, dname, loc);
+				boolean isSuccess = dao.insertRow(newDept);
+				String result = (isSuccess) ? "성공" : "실패";
+				System.out.println("부서 정보 입력 " + result);
+				break;
+
+			case 4:
+				System.out.println("1) 부서명 수정 2) 위치수정 원하는 번호 입력");
+				int updateNo = sc.nextInt();
+				System.out.print("부서 코드를 입력하세요: ");
+				deptno = sc.nextInt();
+				System.out.print("수정할 정보를 입력하세요: ");
+				if (updateNo == 1) { // 부서명 수정
+					dname = sc.next();
+					isSuccess = dao.updateRow(deptno, dname, null, updateNo);
+					System.out.println(isSuccess ? "부서명 수정에 성공하였습니다." : "부서명 수정에 실패하였습니다.");
+
+				} else if (updateNo == 2) { // 위치 수정
+					loc = sc.next();
+					isSuccess = dao.updateRow(deptno, null, loc, updateNo);
+					System.out.println(isSuccess ? "위치 수정에 성공하였습니다." : "위치 수정에 실패하였습니다.");
+
+				}
+				break;
+
+			case 5:
+				System.out.println("삭제할 부서번호 입력 :");
+				deptno = sc.nextInt();
+				isSuccess = dao.removeDepartment(deptno);
+				System.out.println(isSuccess? "삭제 완료 ": "삭제 실패");
+				
+				break;
 			case 6:
 				flag = false;
 				break;
@@ -44,9 +88,6 @@ public class DeptMain {
 			}
 		}
 
-	
-
-				
 	}
 
 }
