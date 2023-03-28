@@ -37,14 +37,22 @@ public class EmpMain {
 				System.out.print("직급: ");
 				String job = sc.next();
 				System.out.print("상사번호: ");
-				int mgr = sc.nextInt();
+				Integer mgr = null; // Integer로 선언하여 null로 초기화합니다.
+				String mgrStr = sc.next();
+				if (!mgrStr.equals("")) { // 입력된 값이 있을 경우에만 값을 변환합니다.
+				    mgr = Integer.parseInt(mgrStr);
+				}
 				System.out.print("입사일(yyyy-mm-dd): ");
 				String hiredateStr = sc.next();
 				Date hiredate = new SimpleDateFormat("yyyy-MM-dd").parse(hiredateStr);
 				System.out.print("급여: ");
 				int sal = sc.nextInt();
 				System.out.print("보너스: ");
-				int comm = sc.nextInt();
+				Integer comm = null; // Integer로 선언하여 null로 초기화합니다.
+				String commStr = sc.next();
+				if (!commStr.equals("")) { // 입력된 값이 있을 경우에만 값을 변환합니다.
+				    comm = Integer.parseInt(commStr);
+				}
 				System.out.print("부서번호: ");
 				int deptno = sc.nextInt();
 				EmpDTO dto = new EmpDTO(empno, ename, job, mgr, hiredate, sal, comm, deptno);
